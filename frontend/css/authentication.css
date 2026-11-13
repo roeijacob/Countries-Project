@@ -1,0 +1,341 @@
+/* ========================================
+   Authentication status messages
+======================================== */
+
+.authentication-messages {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    z-index: 20;
+    width: min(480px, calc(100% - 2rem));
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transform: translateX(-50%);
+}
+
+
+/* ========================================
+   Main authentication page
+======================================== */
+
+.authentication-page {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    background: linear-gradient( 145deg, #eef5fb 0%, #f9fbfd 55%, #eef7f3 100% );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ========================================
+   Authentication card
+======================================== */
+
+.authentication-card {
+    width: 100%;
+    max-width: 480px;
+    padding: 2rem;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ========================================
+   Authentication header
+======================================== */
+
+.authentication-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+    .authentication-header h1 {
+        margin: 0 0 0.5rem;
+        color: #14213d;
+    }
+
+    .authentication-header p {
+        margin: 0;
+        color: #5d6b7b;
+        line-height: 1.5;
+    }
+
+
+/* ========================================
+   Form fields
+======================================== */
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #14213d;
+        font-weight: 600;
+    }
+
+.authentication-card input[type="text"],
+.authentication-card input[type="email"],
+.authentication-card input[type="password"],
+.authentication-card input[type="url"],
+.authentication-card input[type="date"],
+.authentication-card select {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #14213d;
+    font-size: 1rem;
+}
+
+/*
+    כשהסיסמה מוצגת, ה-JavaScript משנה את סוג השדה ל-text.
+    הסלקטור הזה שומר על אותו עיצוב גם במצב הזה.
+*/
+.password-container input[type="text"] {
+    width: 100%;
+    padding: 12px 42px 12px 12px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #14213d;
+    font-size: 1rem;
+}
+
+.authentication-card input:focus,
+.authentication-card select:focus {
+    border-color: #164c96;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(22, 76, 150, 0.12);
+}
+
+
+/* ========================================
+   Password field and eye icon
+======================================== */
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+    .password-container input {
+        padding-right: 42px !important;
+    }
+
+.password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: #5d6b7b;
+    cursor: pointer;
+    box-shadow: none;
+    transition: color 0.2s;
+}
+
+    .password-toggle-icon svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        pointer-events: none;
+    }
+
+    .password-toggle-icon:hover {
+        background: transparent;
+        color: #164c96;
+        box-shadow: none;
+    }
+
+    .password-toggle-icon:focus-visible {
+        outline: 2px solid #164c96;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+    /* מונע בעיות באירועי מעבר העכבר על חלקי ה-SVG */
+    .password-toggle-icon svg {
+        pointer-events: none;
+    }
+
+
+/* ========================================
+   Submit button
+======================================== */
+
+.authentication-submit {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #14213d;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+    .authentication-submit:hover {
+        background-color: #20345f;
+    }
+
+    .authentication-submit:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+
+/* ========================================
+   Login and registration switch
+======================================== */
+
+.authentication-switch {
+    margin: 1.3rem 0 0;
+    text-align: center;
+}
+
+.authentication-switch a {
+    color: #164c96;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+    .authentication-switch a:hover {
+        color: #0f3f80;
+        text-decoration: none;
+    }
+
+/* ========================================
+   Registration page
+======================================== */
+
+.registration-page {
+    align-items: flex-start;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.registration-card {
+    max-width: 780px;
+    transform: none;
+}
+
+.registration-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem 1.5rem;
+}
+
+    .registration-grid .form-group {
+        margin-bottom: 0;
+    }
+
+.form-group-wide {
+    grid-column: 1 / -1;
+}
+
+.registration-card .authentication-submit {
+    margin-top: 1.5rem;
+}
+
+
+/* ========================================
+   Profile image preview
+======================================== */
+
+.profile-image-preview-box {
+    min-height: 100px;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px dashed #b9c4d1;
+    border-radius: 8px;
+    background-color: #f8fafc;
+}
+
+    .profile-image-preview-box img {
+        width: 82px;
+        height: 82px;
+        flex-shrink: 0;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+
+.profile-preview-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+    .profile-preview-text strong {
+        color: #14213d;
+    }
+
+    .profile-preview-text span {
+        color: #5d6b7b;
+        font-size: 0.9rem;
+    }
+
+
+/* ========================================
+   Responsive design
+======================================== */
+
+@media (max-width: 700px) {
+    .authentication-page {
+        padding: 1rem;
+        align-items: flex-start;
+    }
+
+    .authentication-card {
+        padding: 1.5rem;
+    }
+
+    .registration-page {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .registration-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group-wide {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 450px) {
+    .profile-image-preview-box {
+        flex-direction: column;
+        text-align: center;
+    }
+}

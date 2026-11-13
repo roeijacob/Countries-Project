@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hello World</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/home.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+    <script src="../js/config.js" defer></script>
+    <script src="../js/utilities.js" defer></script>
+    <script src="../js/ajaxCalls.js" defer></script>
+    <script src="../js/authentication.js" defer></script>
+    <script src="../js/navigation.js" defer></script>
+    <script src="../js/globe.js" defer></script>
+    <script src="../js/reviews.js" defer></script>
+    <script src="../js/ai-features.js" defer></script>
+    <script src="../js/country-modal.js" defer></script>
+    <script src="../js/countries.js" defer></script>
+    <script src="../js/home.js" defer></script>
+</head>
+
+<body class="home-page-body">
+    <div class="globe-space-background" aria-hidden="true">
+        <div id="starsSmall"
+             class="stars-layer stars-layer-small">
+            <span class="stars-repeat"></span>
+        </div>
+
+        <div id="starsMedium"
+             class="stars-layer stars-layer-medium">
+            <span class="stars-repeat"></span>
+        </div>
+
+        <div id="starsLarge"
+             class="stars-layer stars-layer-large">
+            <span class="stars-repeat"></span>
+        </div>
+
+        <div class="space-atmosphere"></div>
+    </div>
+
+    <nav id="mainNavigation"
+         class="navigation-shell"
+         aria-label="Main navigation"></nav>
+
+    <main class="home-layout"
+          aria-label="Hello World home">
+
+        <div class="main-content-split">
+            <aside class="countries-list-side-panel"
+                   aria-labelledby="countriesPanelTitle">
+
+                <header class="countries-panel-header">
+                    <div>
+                        <p class="eyebrow">Country directory</p>
+                        <h2 id="countriesPanelTitle">
+                            Countries List
+                        </h2>
+                    </div>
+                </header>
+
+                <div class="countries-list-scroll-area">
+                    <div id="countriesLoadingState"
+                         class="status-message"
+                         aria-live="polite"></div>
+
+                    <div id="countriesList"
+                         class="countries-list"
+                         role="list"></div>
+                </div>
+            </aside>
+
+            <section class="globe-section"
+                     aria-labelledby="globeTitle">
+
+                <div class="globe-heading-row">
+                    <h1 id="globeTitle"
+                        class="visually-hidden">
+                        Interactive World Globe
+                    </h1>
+
+                    <div>
+                        <button id="centerGlobeButton"
+                                class="icon-action-button"
+                                type="button"
+                                title="Center Globe"
+                                aria-label="Center globe">
+                            ◎
+                        </button>
+
+                        <button id="resumeRotationButton"
+                                class="icon-action-button"
+                                type="button"
+                                title="Resume Rotation"
+                                aria-label="Resume globe rotation">
+                            ↻
+                        </button>
+                    </div>
+                </div>
+
+                <div id="globeContainer"
+                     class="globe-container"
+                     aria-label="Interactive globe"></div>
+            </section>
+
+            <aside class="filters-side-panel"
+                   aria-labelledby="filtersTitle">
+
+                <header class="countries-panel-header">
+                    <div>
+                        <h2 id="filtersTitle">
+                            Filter Countries
+                        </h2>
+                    </div>
+
+                    <button id="countriesPanelToggle"
+                            class="panel-toggle-button"
+                            type="button"
+                            aria-expanded="true">
+                        Toggle Filters
+                    </button>
+                </header>
+
+                <div id="countriesPanelContent"
+                     class="countries-panel-content">
+
+                    <div class="country-filters">
+                        <div class="filter-field filter-field-wide">
+                            <label for="countrySearchInput">
+                                Country name
+                            </label>
+
+                            <input id="countrySearchInput"
+                                   type="search"
+                                   placeholder="Search by country name">
+                        </div>
+
+                        <div class="filter-field filter-field-wide">
+                            <label for="regionFilter">Region</label>
+
+                            <select id="regionFilter">
+                                <option value="">All regions</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-field filter-field-wide">
+                            <label for="languageFilter">
+                                Language
+                            </label>
+
+                            <select id="languageFilter">
+                                <option value="">All languages</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-field filter-field-wide">
+                            <label for="currencyFilter">
+                                Currency
+                            </label>
+
+                            <select id="currencyFilter">
+                                <option value="">All currencies</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-field filter-field-wide">
+                            <label for="countrySortSelect">
+                                Sort
+                            </label>
+
+                            <select id="countrySortSelect">
+                                <option value="name-asc">
+                                    Name A–Z
+                                </option>
+
+                                <option value="name-desc">
+                                    Name Z–A
+                                </option>
+
+                                <option value="population-asc">
+                                    Population low to high
+                                </option>
+
+                                <option value="population-desc">
+                                    Population high to low
+                                </option>
+
+                                <option value="area-asc">
+                                    Area small to large
+                                </option>
+
+                                <option value="area-desc">
+                                    Area large to small
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="filter-field filter-field-wide range-filter">
+                            <div class="range-filter-title-row">
+                                <span class="range-filter-title">
+                                    Population
+                                </span>
+
+                                <span class="range-filter-unit">
+                                    people
+                                </span>
+                            </div>
+
+                            <div class="range-value-row"
+                                 aria-live="polite">
+
+                                <div class="range-value-box">
+                                    <span>Minimum</span>
+
+                                    <strong id="populationMinimumValue">
+                                        0
+                                    </strong>
+                                </div>
+
+                                <span class="range-value-separator">–</span>
+
+                                <div class="range-value-box range-value-box-maximum">
+                                    <span>Maximum</span>
+
+                                    <strong id="populationMaximumValue">
+                                        0
+                                    </strong>
+                                </div>
+                            </div>
+
+                            <div id="populationRangeContainer"
+                                 class="dual-range">
+
+                                <div class="range-track"></div>
+
+                                <div id="populationRangeSelection"
+                                     class="range-selection"></div>
+
+                                <input id="minimumPopulationInput"
+                                       class="range-input range-input-minimum"
+                                       type="range"
+                                       min="0"
+                                       max="100"
+                                       value="0"
+                                       aria-label="Minimum population">
+
+                                <input id="maximumPopulationInput"
+                                       class="range-input range-input-maximum"
+                                       type="range"
+                                       min="0"
+                                       max="100"
+                                       value="100"
+                                       aria-label="Maximum population">
+                            </div>
+                        </div>
+
+                        <div class="filter-field filter-field-wide range-filter">
+                            <div class="range-filter-title-row">
+                                <span class="range-filter-title">
+                                    Area
+                                </span>
+
+                                <span class="range-filter-unit">
+                                    km²
+                                </span>
+                            </div>
+
+                            <div class="range-value-row"
+                                 aria-live="polite">
+
+                                <div class="range-value-box">
+                                    <span>Minimum</span>
+
+                                    <strong id="areaMinimumValue">
+                                        0 km²
+                                    </strong>
+                                </div>
+
+                                <span class="range-value-separator">–</span>
+
+                                <div class="range-value-box range-value-box-maximum">
+                                    <span>Maximum</span>
+
+                                    <strong id="areaMaximumValue">
+                                        0 km²
+                                    </strong>
+                                </div>
+                            </div>
+
+                            <div id="areaRangeContainer"
+                                 class="dual-range">
+
+                                <div class="range-track"></div>
+
+                                <div id="areaRangeSelection"
+                                     class="range-selection"></div>
+
+                                <input id="minimumAreaInput"
+                                       class="range-input range-input-minimum"
+                                       type="range"
+                                       min="0"
+                                       max="100"
+                                       value="0"
+                                       aria-label="Minimum area">
+
+                                <input id="maximumAreaInput"
+                                       class="range-input range-input-maximum"
+                                       type="range"
+                                       min="0"
+                                       max="100"
+                                       value="100"
+                                       aria-label="Maximum area">
+                            </div>
+                        </div>
+
+                        <div class="filter-actions-row">
+                            <button id="applyFiltersButton"
+                                    class="primary-button filter-action-btn"
+                                    type="button">
+                                Apply Filters
+                            </button>
+
+                            <button id="resetFiltersButton"
+                                    class="secondary-button filter-action-btn"
+                                    type="button">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="filtersValidationMessage"
+                         class="status-message"
+                         aria-live="polite"></div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <div id="countryModal"
+         class="country-modal-overlay"
+         hidden>
+
+        <section class="country-modal"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="countryModalTitle"
+                 tabindex="-1">
+
+            <header class="country-modal-header">
+                <div class="country-modal-title-row">
+                    <img id="countryModalFlag"
+                         class="country-modal-flag"
+                         src="../assets/images/default-profile.svg"
+                         alt="">
+
+                    <div>
+                        <p id="countryModalCodes"
+                           class="country-modal-codes"></p>
+
+                        <h2 id="countryModalTitle">
+                            Country
+                        </h2>
+                    </div>
+                </div>
+
+                <button id="countryModalCloseButton"
+                        class="icon-text-button"
+                        type="button">
+                    Close
+                </button>
+            </header>
+
+            <div class="country-modal-scroll">
+                <div id="countryModalStatus"
+                     class="status-message"
+                     aria-live="polite"></div>
+
+                <section id="countryDetailsGrid"
+                         class="country-details-grid"
+                         aria-label="Country details"></section>
+
+                <section class="country-modal-section">
+                    <h3>Borders</h3>
+
+                    <div id="countryBordersList"
+                         class="border-country-list"></div>
+                </section>
+
+                <section class="country-modal-section country-actions-section">
+                    <h3>Your Travel Lists</h3>
+
+                    <div id="countryActionMessage"
+                         class="status-message"
+                         aria-live="polite"></div>
+
+                    <div class="country-action-buttons">
+                        <button id="wantToVisitButton"
+                                type="button">
+                            Want to Visit
+                        </button>
+
+                        <button id="visitedButton"
+                                type="button">
+                            Visited
+                        </button>
+                    </div>
+                </section>
+
+                <section class="country-modal-section ai-fact-section">
+                    <h3>✨ AI Country Fact</h3>
+                    <div id="aiCountryFact" aria-live="polite">Open a country to generate an interesting fact.</div>
+                </section>
+
+                <section class="country-modal-section">
+                    <div class="section-heading-row">
+                        <h3>Reviews</h3>
+                        <span id="reviewsCount"></span>
+                    </div>
+
+                    <div id="reviewsStatus"
+                         class="status-message"
+                         aria-live="polite"></div>
+
+                    <div id="reviewsList"
+                         class="reviews-list"></div>
+
+                    <form id="reviewForm"
+                          class="review-form"
+                          hidden
+                          novalidate>
+
+                        <h4 id="reviewFormTitle">
+                            Write a Review
+                        </h4>
+
+                        <div class="form-group">
+                            <span class="review-rating-label">
+                                Rating
+                            </span>
+
+                            <input id="reviewRating"
+                                   type="hidden"
+                                   value="0">
+
+                            <div id="reviewRatingStars"
+                                 class="modal-star-rating"
+                                 role="group"
+                                 aria-label="Choose a rating">
+
+                                <button type="button"
+                                        class="modal-star-button"
+                                        data-review-form-star="1">
+                                    ★
+                                </button>
+
+                                <button type="button"
+                                        class="modal-star-button"
+                                        data-review-form-star="2">
+                                    ★
+                                </button>
+
+                                <button type="button"
+                                        class="modal-star-button"
+                                        data-review-form-star="3">
+                                    ★
+                                </button>
+
+                                <button type="button"
+                                        class="modal-star-button"
+                                        data-review-form-star="4">
+                                    ★
+                                </button>
+
+                                <button type="button"
+                                        class="modal-star-button"
+                                        data-review-form-star="5">
+                                    ★
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reviewText">Review</label>
+
+                            <textarea id="reviewText"
+                                      maxlength="1000"
+                                      required></textarea>
+                        </div>
+
+                        <div class="review-form-actions">
+                            <button type="submit">
+                                Save Review
+                            </button>
+
+                            <button id="cancelReviewEditButton"
+                                    class="secondary-button"
+                                    type="button">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="reviewEligibilityMessage"
+                         class="status-message"
+                         aria-live="polite"></div>
+                </section>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

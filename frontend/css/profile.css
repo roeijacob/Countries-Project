@@ -1,0 +1,1782 @@
+.profile-page {
+    min-height: calc(100vh - 64px);
+    background: #f4f7fb;
+}
+
+/* =========================================================
+   GENERAL PROFILE LAYOUT
+========================================================= */
+
+.profile-layout {
+    width: min(1180px, calc(100% - 1.5rem));
+    margin: 0 auto;
+    padding: 1rem 0 2rem;
+}
+
+    .profile-layout:not(.edit-profile-layout) {
+        padding-top: 0.8rem;
+    }
+
+.edit-profile-layout {
+    width: min(1080px, calc(100% - 1.5rem));
+}
+
+/* =========================================================
+   PROFILE TOP ACTIONS
+========================================================= */
+
+.profile-page-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 32px;
+    margin-bottom: 0.45rem;
+}
+
+.profile-layout:not(.edit-profile-layout) #profilePageStatus:empty {
+    display: none;
+}
+
+/* =========================================================
+   GENERAL COMPACT BUTTONS
+========================================================= */
+
+.compact-primary-button,
+.compact-action-button,
+.secondary-link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-height: 34px;
+    padding: 0.42rem 0.72rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    line-height: 1.2;
+}
+
+.secondary-link-button {
+    border-color: #b8c5d6;
+    background: #ffffff;
+    color: #29445f;
+}
+
+    .secondary-link-button:hover {
+        background: #edf3fa;
+        color: #164c96;
+    }
+
+/* =========================================================
+   PROFILE HERO
+========================================================= */
+
+.profile-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.15rem 9rem 1.15rem 1.1rem;
+}
+
+.profile-hero-actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.profile-edit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #b8c8da;
+    border-radius: 8px;
+    background: #f7faff;
+    color: #24558f;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: none;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+    .profile-edit-button:hover {
+        background: #eaf2fb;
+        border-color: #91aac6;
+        color: #164c96;
+        transform: translateY(-1px);
+    }
+
+.profile-hero-image {
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #e7edf5;
+    border: 3px solid #ffffff;
+    box-shadow: 0 3px 14px rgba(25, 48, 74, 0.12);
+}
+
+.profile-hero h1,
+.profile-hero p {
+    margin: 0;
+}
+
+.profile-hero h1 {
+    font-size: 1.7rem;
+}
+
+.profile-hero-subtitle {
+    margin-top: 0.2rem;
+    color: #627287;
+    font-size: 0.92rem;
+}
+
+/* =========================================================
+   PROFILE STATS
+========================================================= */
+
+.profile-stats {
+    margin-top: 0.65rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.profile-stat {
+    min-width: 118px;
+    padding: 0.5rem 0.65rem;
+    border-radius: 9px;
+    background: #f0f5fa;
+}
+
+    .profile-stat strong,
+    .profile-stat span {
+        display: block;
+    }
+
+    .profile-stat strong {
+        font-size: 1.05rem;
+    }
+
+    .profile-stat span {
+        color: #66768a;
+        font-size: 0.76rem;
+    }
+
+/* =========================================================
+   PROFILE GRID
+========================================================= */
+
+.profile-grid {
+    margin-top: 0.65rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+}
+
+.profile-section {
+    padding: 0.85rem 0.95rem;
+}
+
+.profile-section-wide {
+    grid-column: 1 / -1;
+}
+
+.profile-section h2,
+.edit-subsection h2 {
+    margin: 0 0 0.55rem;
+    font-size: 1.03rem;
+}
+
+.section-note {
+    margin: -0.2rem 0 0.6rem;
+    color: #64758a;
+    font-size: 0.84rem;
+}
+
+/* =========================================================
+   PROFILE CHIPS
+========================================================= */
+
+.chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.profile-chip {
+    padding: 0.3rem 0.52rem;
+    border-radius: 999px;
+    background: #edf3fa;
+    color: #28435f;
+    font-size: 0.82rem;
+}
+
+/* =========================================================
+   VISITED COUNTRIES + WANT TO VISIT
+========================================================= */
+
+.profile-travel-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    align-items: stretch;
+}
+
+    .profile-travel-row > .profile-section {
+        width: 100%;
+        min-width: 0;
+    }
+
+/* =========================================================
+   COUNTRY COLLECTIONS
+========================================================= */
+
+.country-collection-list,
+.country-collection-grid {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.profile-travel-row .country-collection-list {
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+/* =========================================================
+   COUNTRY CARD
+========================================================= */
+
+.profile-country-card {
+    display: grid;
+    grid-template-columns: 54px minmax(120px, 1fr) auto;
+    gap: 0.65rem;
+    align-items: center;
+    border: 1px solid #dce3ec;
+    border-radius: 10px;
+    padding: 0.55rem 0.65rem;
+    background: #ffffff;
+}
+
+.profile-travel-row .profile-country-card {
+    grid-template-columns: 54px minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.7rem 0.75rem;
+}
+
+.profile-country-card img {
+    width: 50px;
+    height: 34px;
+    border-radius: 5px;
+    object-fit: cover;
+    border: 1px solid #d7dfe9;
+}
+
+.profile-country-card h3 {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.profile-travel-row .profile-country-card h3 {
+    min-width: 0;
+    line-height: 1.3;
+}
+
+/* =========================================================
+   COUNTRY CARD ACTIONS
+========================================================= */
+
+.profile-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+}
+
+.profile-travel-row .profile-card-actions {
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+}
+
+/* =========================================================
+   GENERAL SECONDARY BUTTONS
+========================================================= */
+
+.profile-page .secondary-button,
+.profile-country-card > .button-link {
+    width: auto;
+    min-height: 32px;
+    padding: 0.36rem 0.58rem;
+    border-color: #b8c5d6;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #29445f;
+    box-shadow: none;
+    font-size: 0.8rem;
+}
+
+    .profile-page .secondary-button:hover,
+    .profile-country-card > .button-link:hover {
+        background: #edf3fa;
+        color: #164c96;
+        box-shadow: none;
+    }
+
+/* =========================================================
+   PROFILE ICON BUTTONS
+========================================================= */
+
+.profile-icon-button,
+.profile-travel-row .profile-card-actions .button-link,
+.profile-travel-row .profile-card-actions .secondary-button,
+.profile-travel-row [data-country-review-toggle],
+.profile-review-actions .button-link,
+.profile-review-actions button,
+.profile-review-card > .profile-card-actions .button-link,
+.profile-review-card > .profile-card-actions button,
+.selected-language-row [data-remove-language] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    padding: 0;
+    border-radius: 9px;
+    font-size: 0;
+    line-height: 1;
+    text-decoration: none;
+    box-shadow: none;
+    cursor: pointer;
+    appearance: none;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+    .profile-icon-button::before,
+    .profile-travel-row .profile-card-actions .button-link::before,
+    .profile-travel-row .profile-card-actions .secondary-button::before,
+    .profile-travel-row [data-country-review-toggle]::before,
+    .profile-review-actions .button-link::before,
+    .profile-review-actions button::before,
+    .profile-review-card > .profile-card-actions .button-link::before,
+    .profile-review-card > .profile-card-actions button::before,
+    .selected-language-row [data-remove-language]::before {
+        content: "";
+        display: block;
+        width: 18px;
+        height: 18px;
+        flex: 0 0 18px;
+        background-color: transparent;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .profile-icon-button:hover,
+    .profile-travel-row .profile-card-actions .button-link:hover,
+    .profile-travel-row .profile-card-actions .secondary-button:hover,
+    .profile-travel-row [data-country-review-toggle]:hover,
+    .profile-review-actions .button-link:hover,
+    .profile-review-actions button:hover,
+    .profile-review-card > .profile-card-actions .button-link:hover,
+    .profile-review-card > .profile-card-actions button:hover,
+    .selected-language-row [data-remove-language]:hover {
+        box-shadow: none;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .profile-icon-button:focus-visible,
+    .profile-travel-row .profile-card-actions a:focus-visible,
+    .profile-travel-row .profile-card-actions button:focus-visible,
+    .profile-review-actions a:focus-visible,
+    .profile-review-actions button:focus-visible,
+    .selected-language-row [data-remove-language]:focus-visible {
+        outline: 2px solid #164c96;
+        outline-offset: 2px;
+    }
+
+/* Open country */
+
+.profile-open-country-button,
+.profile-travel-row .profile-card-actions .button-link,
+.profile-review-actions .button-link,
+.profile-review-card > .profile-card-actions .button-link {
+    border: 1px solid #1958a0;
+    background: #1958a0;
+    color: #ffffff;
+}
+
+    .profile-open-country-button:hover,
+    .profile-travel-row .profile-card-actions .button-link:hover,
+    .profile-review-actions .button-link:hover,
+    .profile-review-card > .profile-card-actions .button-link:hover {
+        border-color: #124681;
+        background: #124681;
+        color: #ffffff;
+    }
+
+    .profile-open-country-button::before,
+    .profile-travel-row .profile-card-actions .button-link::before,
+    .profile-review-actions .button-link::before,
+    .profile-review-card > .profile-card-actions .button-link::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M3 12h18'/%3E%3Cpath d='M12 3c2.3 2.5 3.5 5.5 3.5 9S14.3 18.5 12 21'/%3E%3Cpath d='M12 3C9.7 5.5 8.5 8.5 8.5 12S9.7 18.5 12 21'/%3E%3C/svg%3E");
+    }
+
+/* Edit review */
+
+.profile-review-edit-button,
+.profile-review-edit-icon,
+.profile-review-actions .profile-edit-button,
+.profile-travel-row [data-country-review-toggle],
+.profile-review-actions button:not(.secondary-button):not(.profile-delete-button),
+.profile-review-card > .profile-card-actions button:not(.secondary-button) {
+    border: 1px solid #b8c7d8;
+    background: #ffffff;
+    color: #24558f;
+}
+
+    .profile-review-edit-button:hover,
+    .profile-review-edit-icon:hover,
+    .profile-review-actions .profile-edit-button:hover,
+    .profile-travel-row [data-country-review-toggle]:hover,
+    .profile-review-actions button:not(.secondary-button):not(.profile-delete-button):hover,
+    .profile-review-card > .profile-card-actions button:not(.secondary-button):hover {
+        border-color: #8ba8c7;
+        background: #edf4fc;
+        color: #164c96;
+    }
+
+    .profile-review-edit-button::before,
+    .profile-review-edit-icon::before,
+    .profile-review-actions .profile-edit-button::before,
+    .profile-travel-row [data-country-review-toggle]::before,
+    .profile-review-actions button:not(.secondary-button):not(.profile-delete-button)::before,
+    .profile-review-card > .profile-card-actions button:not(.secondary-button)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2324558f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z'/%3E%3C/svg%3E");
+    }
+
+/* Delete / remove */
+
+.profile-delete-button,
+.profile-travel-row .profile-card-actions .secondary-button,
+.profile-review-actions .secondary-button,
+.profile-review-card > .profile-card-actions .secondary-button,
+.selected-language-row [data-remove-language] {
+    border: 1px solid #d3a0a0;
+    background: #ffffff;
+    color: #a93434;
+}
+
+    .profile-delete-button:hover,
+    .profile-travel-row .profile-card-actions .secondary-button:hover,
+    .profile-review-actions .secondary-button:hover,
+    .profile-review-card > .profile-card-actions .secondary-button:hover,
+    .selected-language-row [data-remove-language]:hover {
+        border-color: #c86868;
+        background: #fff1f1;
+        color: #962828;
+    }
+
+    .profile-delete-button::before,
+    .profile-travel-row .profile-card-actions .secondary-button::before,
+    .profile-review-actions .secondary-button::before,
+    .profile-review-card > .profile-card-actions .secondary-button::before,
+    .selected-language-row [data-remove-language]::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a93434' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6h18'/%3E%3Cpath d='M8 6V4h8v2'/%3E%3Cpath d='M19 6l-1 14H6L5 6'/%3E%3Cpath d='M10 10v6'/%3E%3Cpath d='M14 10v6'/%3E%3C/svg%3E");
+    }
+
+.profile-travel-row .profile-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+}
+
+.profile-travel-row .profile-country-card {
+    grid-template-columns: 54px minmax(0, 1fr) auto;
+}
+
+/* =========================================================
+   COUNTRY REVIEW EDITOR
+========================================================= */
+
+.profile-country-review-editor {
+    grid-column: 1 / -1;
+    padding-top: 0.55rem;
+    border-top: 1px solid #e1e7ef;
+}
+
+    .profile-country-review-editor[hidden] {
+        display: none;
+    }
+
+.review-editor-row {
+    display: grid;
+    grid-template-columns: auto minmax(220px, 1fr) auto;
+    gap: 0.6rem;
+    align-items: end;
+}
+
+/* =========================================================
+   STAR RATINGS
+========================================================= */
+
+.star-rating-input,
+.star-rating-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.08rem;
+}
+
+.star-rating-button {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+    padding: 0;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: #9aa7b6;
+    box-shadow: none;
+    font-size: 1.35rem;
+    line-height: 1;
+}
+
+    .star-rating-button:hover,
+    .star-rating-button:focus-visible,
+    .star-rating-button.star-selected {
+        background: #fff8dc;
+        color: #d79a00;
+        box-shadow: none;
+    }
+
+.star-rating-display span {
+    color: #c4ccd6;
+    font-size: 1.05rem;
+}
+
+.star-rating-display .star-filled {
+    color: #d79a00;
+}
+
+.review-text-input {
+    min-height: 62px;
+    max-height: 120px;
+    padding: 0.48rem 0.58rem;
+    font-size: 0.87rem;
+}
+
+/* =========================================================
+   AI RECOMMENDATIONS
+========================================================= */
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+}
+
+.recommendation-card {
+    border: 1px solid #dce3ec;
+    border-radius: 10px;
+    padding: 0.7rem;
+    background: #ffffff;
+}
+
+    .recommendation-card img {
+        width: 54px;
+        height: 36px;
+        border-radius: 5px;
+        object-fit: cover;
+        border: 1px solid #d7dfe9;
+    }
+
+    .recommendation-card h3 {
+        margin: 0.4rem 0 0.2rem;
+        font-size: 0.95rem;
+    }
+
+    .recommendation-card p {
+        margin: 0.25rem 0 0.55rem;
+        font-size: 0.86rem;
+    }
+
+#profileRecommendations .button-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-width: 0;
+    min-height: 30px;
+    padding: 0.35rem 0.62rem;
+    border-radius: 7px;
+    font-size: 0.76rem;
+    line-height: 1.2;
+}
+
+/* =========================================================
+   PROFILE REVIEWS
+========================================================= */
+
+.profile-reviews-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.profile-review-card {
+    position: relative;
+    overflow: hidden;
+    padding: 0.9rem 1rem 0.85rem 1.15rem;
+    border: 1px solid #dce3ec;
+    border-radius: 11px;
+    background: #ffffff;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+    .profile-review-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 4px;
+        background: #164c96;
+    }
+
+    .profile-review-card:hover {
+        border-color: #becddd;
+        box-shadow: 0 7px 18px rgba(29, 48, 72, 0.08);
+    }
+
+/* New review structure */
+
+.profile-review-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.profile-review-heading {
+    min-width: 0;
+}
+
+    .profile-review-heading h3 {
+        margin: 0 0 0.2rem;
+        color: #17243a;
+        font-size: 1rem;
+    }
+
+    .profile-review-heading .star-rating-display {
+        margin: 0;
+    }
+
+.profile-review-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+}
+
+/* Fallback for the older review structure */
+
+.profile-review-card > h3 {
+    margin: 0;
+    color: #17243a;
+    font-size: 1rem;
+}
+
+.profile-review-card > .star-rating-display {
+    margin: 0.15rem 0 0;
+}
+
+.profile-review-card > .profile-card-actions {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+}
+
+.profile-review-text,
+.profile-review-card > p:not(.review-meta) {
+    margin: 0.7rem 0 0;
+    padding: 0.7rem 0.8rem;
+    border-radius: 8px;
+    background: #f3f7fb;
+    color: #26364b;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.profile-review-card .review-meta {
+    margin: 0.45rem 0 0;
+    color: #748398;
+    font-size: 0.76rem;
+}
+
+@media (max-width: 680px) {
+    .profile-travel-row .profile-country-card {
+        grid-template-columns: 46px minmax(0, 1fr) auto;
+    }
+
+    .profile-travel-row .profile-card-actions {
+        grid-column: auto;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+    }
+
+    .profile-review-header {
+        flex-direction: column;
+    }
+
+    .profile-review-actions {
+        align-self: flex-end;
+    }
+
+    .profile-review-card > .profile-card-actions {
+        position: static;
+        justify-content: flex-end;
+        margin-top: 0.5rem;
+    }
+}
+/* =========================================================
+   EDIT PROFILE FORM
+========================================================= */
+
+.edit-profile-form {
+    padding: 1.35rem 1.45rem 1.55rem;
+}
+
+.edit-profile-heading {
+    margin-bottom: 1rem;
+}
+
+    .edit-profile-heading h1,
+    .edit-profile-heading p {
+        margin: 0;
+    }
+
+    .edit-profile-heading h1 {
+        font-size: 1.55rem;
+    }
+
+    .edit-profile-heading p {
+        margin-top: 0.2rem;
+        color: #66768a;
+        font-size: 0.88rem;
+    }
+
+.edit-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.15rem 1rem;
+}
+
+    .edit-form-grid .form-group {
+        min-width: 0;
+        margin-bottom: 0;
+    }
+
+.edit-form-wide {
+    grid-column: 1 / -1;
+}
+
+.edit-subsection {
+    padding-top: 1.25rem;
+    border-top: 1px solid #e3e8ef;
+}
+
+    .edit-subsection h2 {
+        margin-bottom: 0.55rem;
+    }
+
+.compact-form-group {
+    margin: 0;
+}
+
+/* Personal information fields */
+
+#editFullName,
+#editBirthDate,
+#editGender {
+    width: 100%;
+    height: 48px;
+    min-height: 48px;
+    box-sizing: border-box;
+    border: 1px solid #c8d4e2;
+    border-radius: 10px;
+    background: #fbfcfe;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+    #editFullName:focus,
+    #editBirthDate:focus,
+    #editGender:focus,
+    #editImageUrl:focus {
+        border-color: #4578b8;
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(22, 76, 150, 0.08);
+        outline: none;
+    }
+
+/* =========================================================
+   EDIT PROFILE IMAGE
+========================================================= */
+
+.profile-image-editor {
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #dce4ee;
+    border-radius: 12px;
+    background: #f8fafc;
+}
+
+.edit-image-preview {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ffffff;
+    background: #edf2f7;
+    box-shadow: 0 3px 12px rgba(28, 52, 78, 0.12);
+}
+
+.profile-image-controls {
+    display: grid;
+    gap: 0.55rem;
+}
+
+    .profile-image-controls label {
+        font-weight: 700;
+    }
+
+#editImageUrl {
+    width: 100%;
+    min-height: 42px;
+    border: 1px solid #c8d4e2;
+    border-radius: 9px;
+    background: #ffffff;
+}
+
+/* =========================================================
+   HOBBIES + TRAVEL PREFERENCES + CONTINENTS
+========================================================= */
+
+.compact-option-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.2rem;
+}
+
+.preference-option,
+.hobby-option {
+    position: relative;
+    display: inline-flex;
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+    .preference-option input,
+    .hobby-option input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .preference-option span,
+    .hobby-option span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        min-width: 88px;
+        min-height: 35px;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid #cbd6e3;
+        border-radius: 999px;
+        background: #ffffff;
+        color: #40566f;
+        box-shadow: 0 1px 2px rgba(30, 55, 80, 0.04);
+        font-size: 0.77rem;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .preference-option:hover span,
+    .hobby-option:hover span {
+        border-color: #9fb5ce;
+        background: #f4f8fd;
+        color: #164c96;
+        box-shadow: 0 2px 6px rgba(30, 76, 125, 0.08);
+        transform: translateY(-1px);
+    }
+
+    .preference-option input:checked + span,
+    .hobby-option input:checked + span {
+        border-color: #164c96;
+        background: #164c96;
+        color: #ffffff;
+        box-shadow: 0 2px 7px rgba(22, 76, 150, 0.18);
+    }
+
+    .preference-option input:focus-visible + span,
+    .hobby-option input:focus-visible + span {
+        outline: 3px solid rgba(22, 76, 150, 0.25);
+        outline-offset: 2px;
+    }
+
+.other-hobby-editor {
+    margin-top: 0.7rem;
+    max-width: 520px;
+}
+
+.inline-add-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.45rem;
+}
+
+.custom-hobbies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.55rem;
+}
+
+.custom-hobby-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 30px;
+    padding: 0.25rem 0.35rem 0.25rem 0.55rem;
+    border: 1px solid #d7e2ee;
+    border-radius: 999px;
+    background: #edf3fa;
+    color: #29445f;
+    font-size: 0.78rem;
+}
+
+    .custom-hobby-chip button {
+        width: 24px;
+        min-width: 24px;
+        height: 24px;
+        min-height: 24px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: #d9e4f1;
+        color: #29445f;
+        box-shadow: none;
+    }
+
+/* =========================================================
+   LANGUAGES EDITOR
+========================================================= */
+
+.language-add-row {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.75fr) minmax(320px, 1.5fr) auto;
+    gap: 1rem;
+    align-items: end;
+    padding: 1rem 1rem 2.2rem;
+    border: 1px solid #dce4ee;
+    border-radius: 12px;
+    background: #f8fafc;
+}
+
+    .language-add-row .form-group {
+        margin-bottom: 0;
+    }
+
+    .language-add-row label {
+        margin-bottom: 0.35rem;
+    }
+
+    .language-add-row select {
+        border-radius: 9px;
+    }
+
+.language-slider-control {
+    position: relative;
+    min-width: 0;
+}
+
+    .language-slider-control input[type="range"],
+    .selected-language-slider input[type="range"] {
+        width: 100%;
+        padding: 0;
+        border: 0;
+        accent-color: #1d5aa6;
+        cursor: pointer;
+    }
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.35rem;
+    color: #718198;
+    font-size: 0.68rem;
+}
+
+.range-value {
+    width: fit-content;
+    margin: 0.3rem auto 0;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    background: #e8f0fa;
+    color: #244b78;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Only the Add Language indicator floats below its slider */
+
+.language-add-row .range-value {
+    position: absolute;
+    top: calc(100% + 0.55rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    margin: 0;
+}
+
+/* Add Language button */
+
+#addLanguageButton {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.42rem;
+    width: auto;
+    min-width: 132px;
+    min-height: 42px;
+    padding: 0.48rem 0.85rem;
+    border: 0;
+    border-radius: 9px;
+    background: #19569f;
+    color: #ffffff;
+    box-shadow: 0 3px 8px rgba(25, 86, 159, 0.18);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+    #addLanguageButton::before {
+        content: "+";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    #addLanguageButton:hover {
+        background: #124987;
+        box-shadow: 0 4px 11px rgba(25, 86, 159, 0.24);
+        transform: translateY(-1px);
+    }
+
+/* =========================================================
+   EXISTING LANGUAGES
+========================================================= */
+
+.selected-languages-list {
+    margin-top: 0.75rem;
+    display: grid;
+    gap: 0.55rem;
+}
+
+.selected-language-row {
+    display: grid;
+    grid-template-columns: auto auto minmax(300px, 680px) 38px;
+    gap: 0.85rem;
+    align-items: center;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid #dce4ee;
+    border-radius: 11px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(28, 52, 78, 0.04);
+}
+
+    .selected-language-row > .range-value {
+        position: static;
+        transform: none;
+        width: max-content;
+        margin: 0;
+    }
+
+    .selected-language-row strong {
+        display: block;
+        width: fit-content;
+        margin-bottom: 0.35rem;
+        padding: 0.28rem 0.65rem;
+        border-radius: 999px;
+        background: #eaf2fb;
+        color: #244b78;
+        font-size: 0.8rem;
+        font-weight: 700;
+    }
+
+.selected-language-slider {
+    min-width: 0;
+}
+
+    .selected-language-slider .range-labels {
+        width: 100%;
+        margin: 0 0 0.3rem;
+    }
+
+    .selected-language-slider input[type="range"] {
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+
+    .selected-language-slider .range-value {
+        position: static;
+        transform: none;
+        width: fit-content;
+        margin: 0.35rem auto 0;
+    }
+
+/* =========================================================
+   COUNTRY SELECTOR - EDIT PROFILE
+========================================================= */
+
+.country-selector-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+}
+
+    .country-selector-heading h2,
+    .country-selector-heading p {
+        margin-bottom: 0;
+    }
+
+.country-selector-search {
+    width: 190px;
+    min-height: 34px;
+    padding: 0.38rem 0.55rem;
+    font-size: 0.82rem;
+}
+
+.country-flag-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 72px);
+    justify-content: start;
+    gap: 0.55rem;
+    max-height: 270px;
+    overflow-y: auto;
+    padding: 0.15rem 0.4rem 0.15rem 0;
+}
+
+#visitedCountrySelector {
+    margin-bottom: 1.7rem;
+}
+
+.country-flag-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 60px;
+    min-height: 60px;
+    padding: 0.45rem;
+    border: 1px solid #d3dce7;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #24384f;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+    .country-flag-option span {
+        display: none;
+    }
+
+    .country-flag-option:hover {
+        background: #f2f6fb;
+        border-color: #aebed1;
+        box-shadow: none;
+        transform: translateY(-1px);
+    }
+
+    .country-flag-option img {
+        width: 48px;
+        height: 32px;
+        border-radius: 4px;
+        object-fit: cover;
+        border: 1px solid #d6dde7;
+    }
+
+    .country-flag-option.country-selected {
+        border-color: #164c96;
+        background: #eaf2ff;
+        box-shadow: inset 0 0 0 1px #164c96;
+    }
+
+        .country-flag-option.country-selected::after {
+            content: "\2713";
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            background: #164c96;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+/* =========================================================
+   EDIT FORM ACTIONS
+========================================================= */
+
+.edit-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.45rem;
+    margin-top: 1.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e3e8ef;
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+    .profile-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .language-add-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #addLanguageButton {
+        width: fit-content;
+    }
+
+    .selected-language-row {
+        grid-template-columns: minmax(110px, 0.45fr) minmax(220px, 1.4fr) 38px;
+    }
+
+    .review-editor-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL TABLET
+========================================================= */
+
+@media (max-width: 820px) {
+    .profile-travel-row {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #editGender {
+        width: 100%;
+    }
+
+    .language-add-row,
+    .selected-language-row {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+    }
+
+    #addLanguageButton {
+        width: fit-content;
+    }
+
+    .selected-language-row [data-remove-language] {
+        justify-self: end;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 680px) {
+    .profile-layout,
+    .edit-profile-layout {
+        width: min(100% - 1rem, 1180px);
+        padding-top: 0.65rem;
+    }
+
+        .profile-layout:not(.edit-profile-layout) {
+            padding-top: 0.8rem;
+        }
+
+    /* PROFILE HERO */
+
+    .profile-hero {
+        grid-template-columns: 72px 1fr;
+        padding: 3.6rem 0.8rem 0.8rem;
+    }
+
+    .profile-hero-actions {
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+
+    .profile-hero-image {
+        width: 70px;
+        height: 70px;
+    }
+
+    .profile-hero h1 {
+        font-size: 1.35rem;
+    }
+
+    /* PROFILE STATS */
+
+    .profile-stats {
+        gap: 0.3rem;
+    }
+
+    .profile-stat {
+        min-width: 96px;
+        padding: 0.4rem 0.5rem;
+    }
+
+    /* MAIN GRIDS */
+
+    .profile-grid,
+    .recommendations-grid,
+    .edit-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-section-wide,
+    .edit-form-wide {
+        grid-column: auto;
+    }
+
+    /* TRAVEL SECTIONS */
+
+    .profile-travel-row {
+        grid-column: auto;
+        grid-template-columns: 1fr;
+    }
+
+        .profile-country-card,
+        .profile-travel-row .profile-country-card {
+            grid-template-columns: 48px minmax(0, 1fr);
+        }
+
+            .profile-country-card img {
+                width: 44px;
+                height: 30px;
+            }
+
+        .profile-card-actions,
+        .profile-travel-row .profile-card-actions {
+            grid-column: 1 / -1;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+    /* PROFILE REVIEWS */
+
+    .profile-review-card {
+        padding-right: 1rem;
+    }
+
+        .profile-review-card > .profile-card-actions {
+            position: static;
+            grid-column: 1 / -1;
+            justify-content: flex-end;
+            margin-top: 0.35rem;
+        }
+
+    /* EDIT PROFILE */
+
+    .edit-profile-form {
+        padding: 1rem;
+    }
+
+    .profile-image-editor {
+        grid-template-columns: 1fr;
+    }
+
+    /* HOBBIES + TRAVEL PREFERENCES */
+
+    .compact-option-grid {
+        gap: 0.4rem;
+    }
+
+    .preference-option span,
+    .hobby-option span {
+        min-width: 82px;
+        min-height: 34px;
+        padding: 0.3rem 0.65rem;
+    }
+
+    /* LANGUAGES */
+
+    .language-add-row {
+        grid-template-columns: 1fr;
+        padding: 0.75rem;
+    }
+
+    #addLanguageButton {
+        width: 100%;
+    }
+
+    .selected-language-row {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+    }
+
+    .selected-language-slider .range-labels,
+    .selected-language-slider input[type="range"] {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .selected-language-row [data-remove-language] {
+        justify-self: end;
+    }
+
+    /* COUNTRY SELECTORS */
+
+    .country-selector-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .country-selector-search {
+        width: 100%;
+    }
+
+    .country-flag-selector {
+        grid-template-columns: repeat(auto-fill, 66px);
+        gap: 0.45rem;
+    }
+
+    .country-flag-option {
+        width: 66px;
+        height: 56px;
+        min-height: 56px;
+    }
+
+        .country-flag-option img {
+            width: 44px;
+            height: 29px;
+        }
+}
+
+/* =========================================================
+   FINAL PROFILE VIEW FIXES
+   Keep this block at the very end of profile.css
+========================================================= */
+
+/* ---------- COUNTRY AND REVIEW ACTIONS ---------- */
+
+.profile-travel-row .profile-card-actions,
+.profile-review-card > .profile-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+    margin: 0;
+}
+
+    .profile-travel-row .profile-card-actions > .button-link,
+    .profile-travel-row .profile-card-actions > .secondary-button,
+    .profile-review-card > .profile-card-actions > .button-link,
+    .profile-review-card > .profile-card-actions > button,
+    .selected-language-row [data-remove-language] {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 36px;
+        width: 36px !important;
+        height: 36px;
+        min-width: 36px !important;
+        min-height: 36px !important;
+        box-sizing: border-box;
+        padding: 0 !important;
+        border-radius: 9px;
+        font-size: 0 !important;
+        line-height: 1;
+        text-decoration: none;
+        box-shadow: none !important;
+        cursor: pointer;
+        transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+    }
+
+        .profile-travel-row .profile-card-actions > .button-link:hover,
+        .profile-travel-row .profile-card-actions > .secondary-button:hover,
+        .profile-review-card > .profile-card-actions > .button-link:hover,
+        .profile-review-card > .profile-card-actions > button:hover,
+        .selected-language-row [data-remove-language]:hover {
+            box-shadow: none !important;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        .profile-travel-row .profile-card-actions > .button-link:focus-visible,
+        .profile-travel-row .profile-card-actions > .secondary-button:focus-visible,
+        .profile-review-card > .profile-card-actions > .button-link:focus-visible,
+        .profile-review-card > .profile-card-actions > button:focus-visible,
+        .selected-language-row [data-remove-language]:focus-visible {
+            outline: 2px solid #164c96;
+            outline-offset: 2px;
+        }
+
+        /* Remove the old broken mask settings */
+
+        .profile-travel-row .profile-card-actions > .button-link::before,
+        .profile-travel-row .profile-card-actions > .secondary-button::before,
+        .profile-review-card > .profile-card-actions > .button-link::before,
+        .profile-review-card > .profile-card-actions > button::before,
+        .selected-language-row [data-remove-language]::before {
+            content: "";
+            display: block;
+            width: 18px;
+            height: 18px;
+            flex: 0 0 18px;
+            background-color: transparent !important;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            -webkit-mask-image: none !important;
+            mask-image: none !important;
+        }
+
+    /* ---------- OPEN COUNTRY BUTTON ---------- */
+
+    .profile-travel-row .profile-card-actions > .button-link,
+    .profile-review-card > .profile-card-actions > .button-link {
+        border: 1px solid #1958a0 !important;
+        background: #1958a0 !important;
+        color: #ffffff !important;
+    }
+
+        .profile-travel-row .profile-card-actions > .button-link:hover,
+        .profile-review-card > .profile-card-actions > .button-link:hover {
+            border-color: #124681 !important;
+            background: #124681 !important;
+            color: #ffffff !important;
+        }
+
+        .profile-travel-row .profile-card-actions > .button-link::before,
+        .profile-review-card > .profile-card-actions > .button-link::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M3 12h18'/%3E%3Cpath d='M12 3c2.3 2.5 3.5 5.5 3.5 9S14.3 18.5 12 21'/%3E%3Cpath d='M12 3C9.7 5.5 8.5 8.5 8.5 12S9.7 18.5 12 21'/%3E%3C/svg%3E") !important;
+        }
+
+    /* ---------- EDIT REVIEW BUTTON ---------- */
+
+    .profile-review-card > .profile-card-actions > button:not(.secondary-button) {
+        border: 1px solid #b8c7d8 !important;
+        background: #ffffff !important;
+        color: #24558f !important;
+    }
+
+        .profile-review-card > .profile-card-actions > button:not(.secondary-button):hover {
+            border-color: #8ba8c7 !important;
+            background: #edf4fc !important;
+            color: #164c96 !important;
+        }
+
+        .profile-review-card > .profile-card-actions > button:not(.secondary-button)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2324558f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z'/%3E%3C/svg%3E") !important;
+        }
+
+    /* ---------- DELETE / REMOVE BUTTON ---------- */
+
+    .profile-travel-row .profile-card-actions > .secondary-button,
+    .profile-review-card > .profile-card-actions > .secondary-button,
+    .selected-language-row [data-remove-language] {
+        border: 1px solid #c8d2dd !important;
+        background: #ffffff !important;
+        color: #9f3636 !important;
+    }
+
+        .profile-travel-row .profile-card-actions > .secondary-button:hover,
+        .profile-review-card > .profile-card-actions > .secondary-button:hover,
+        .selected-language-row [data-remove-language]:hover {
+            border-color: #d58c8c !important;
+            background: #fff1f1 !important;
+            color: #a93434 !important;
+        }
+
+        .profile-travel-row .profile-card-actions > .secondary-button::before,
+        .profile-review-card > .profile-card-actions > .secondary-button::before,
+        .selected-language-row [data-remove-language]::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a93434' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6h18'/%3E%3Cpath d='M8 6V4h8v2'/%3E%3Cpath d='M19 6l-1 14H6L5 6'/%3E%3Cpath d='M10 10v6'/%3E%3Cpath d='M14 10v6'/%3E%3C/svg%3E") !important;
+        }
+
+/* ---------- COUNTRY ROWS ---------- */
+
+.profile-travel-row .profile-country-card {
+    grid-template-columns: 54px minmax(0, 1fr) auto !important;
+    gap: 0.75rem;
+    min-height: 58px;
+}
+
+    .profile-travel-row .profile-country-card h3 {
+        min-width: 0;
+        margin: 0;
+        overflow-wrap: anywhere;
+    }
+
+/* ---------- PROFILE REVIEWS ---------- */
+
+.profile-review-card {
+    position: relative;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-areas:
+        "review-title review-actions"
+        "review-rating review-actions"
+        "review-text review-text"
+        "review-date review-date";
+    gap: 0.2rem 1rem;
+    overflow: hidden;
+    padding: 0.9rem 1rem 0.85rem 1.15rem !important;
+    border: 1px solid #dce3ec;
+    border-radius: 11px;
+    background: #ffffff;
+}
+
+    .profile-review-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 4px;
+        background: #164c96;
+    }
+
+    .profile-review-card > h3 {
+        grid-area: review-title;
+        min-width: 0;
+        margin: 0 !important;
+        color: #17243a;
+        font-size: 1rem;
+    }
+
+    .profile-review-card > .star-rating-display {
+        grid-area: review-rating;
+        margin: 0.1rem 0 0 !important;
+    }
+
+    .profile-review-card > p:not(.review-meta) {
+        grid-area: review-text;
+        margin: 0.65rem 0 0 !important;
+        padding: 0.7rem 0.8rem !important;
+        border-radius: 8px;
+        background: #f3f7fb;
+        color: #26364b;
+        font-size: 0.88rem;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
+    }
+
+    .profile-review-card > .review-meta {
+        grid-area: review-date;
+        margin: 0.4rem 0 0 !important;
+        color: #748398;
+        font-size: 0.76rem;
+    }
+
+    .profile-review-card > .profile-card-actions {
+        position: static !important;
+        grid-area: review-actions;
+        align-self: start;
+        justify-self: end;
+    }
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 680px) {
+    .profile-travel-row .profile-country-card {
+        grid-template-columns: 46px minmax(0, 1fr) auto !important;
+    }
+
+    .profile-travel-row .profile-card-actions {
+        grid-column: auto !important;
+        justify-content: flex-end !important;
+        flex-wrap: nowrap !important;
+    }
+}
+
+@media (max-width: 520px) {
+    .profile-review-card {
+        grid-template-columns: 1fr !important;
+        grid-template-areas:
+            "review-title"
+            "review-rating"
+            "review-actions"
+            "review-text"
+            "review-date";
+    }
+
+        .profile-review-card > .profile-card-actions {
+            justify-self: start;
+            margin-top: 0.4rem;
+        }
+}

@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         
+    <title>Reviews Feed | Hello World</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/reviews-feed.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/config.js" defer></script>
+    <script src="../js/utilities.js" defer></script>
+    <script src="../js/ajaxCalls.js" defer></script>
+    <script src="../js/authentication.js" defer></script>
+    <script src="../js/navigation.js" defer></script>
+    <script src="../js/reviews-feed.js" defer></script>
+    <script type="module" src="../js/reviews-chat.js"></script>
+
+</head>
+
+<body class="reviews-feed-page">
+    <nav id="mainNavigation"
+         class="navigation-shell"
+         aria-label="Main navigation"></nav>
+
+    <main class="page-container reviews-feed-layout">
+        <header class="reviews-feed-header card">
+            <p class="reviews-feed-eyebrow">
+                Community
+            </p>
+
+            <h1>World Reviews Feed</h1>
+
+            <p>
+                Recommendations, experiences and thoughts
+                about countries from Hello World users.
+            </p>
+        </header>
+
+        <section class="reviews-feed-controls card"
+                 aria-label="Review filters">
+
+            <div class="form-group">
+                <label for="reviewsFeedSearch">
+                    Search reviews
+                </label>
+
+                <input id="reviewsFeedSearch"
+                       type="search"
+                       placeholder="User, country or review text">
+            </div>
+
+            <div class="form-group">
+                <label for="reviewsFeedSort">
+                    Sort
+                </label>
+
+                <select id="reviewsFeedSort">
+                    <option value="newest">
+                        Newest first
+                    </option>
+
+                    <option value="oldest">
+                        Oldest first
+                    </option>
+
+                    <option value="rating-desc">
+                        Highest rating
+                    </option>
+
+                    <option value="rating-asc">
+                        Lowest rating
+                    </option>
+                </select>
+            </div>
+        </section>
+
+        <div class="reviews-content-grid">
+            <section class="reviews-column" aria-label="Reviews">
+                <div id="reviewsFeedStatus" class="status-message" aria-live="polite"></div>
+
+                <section id="reviewsFeedList" class="reviews-feed-list" aria-label="All reviews"></section>
+            </section>
+
+            <aside class="reviews-chat-section card" aria-label="Traveler chat">
+                <div class="chat-header">
+                    <div>
+                        <p class="chat-eyebrow">Community chat</p>
+                        <h2>Traveler Chat</h2>
+                    </div>
+
+                    <span class="chat-live-indicator">
+                        <span></span>
+                        Live
+                    </span>
+                </div>
+
+                <p class="chat-description">Talk with other travelers</p>
+
+                <div id="chatMessages" class="chat-messages" role="log" aria-live="polite"></div>
+
+                <form id="chatForm" class="chat-form">
+                    <textarea id="chatInput" maxlength="500" placeholder="Write a message..." aria-label="Chat message" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+
+                <p id="chatStatus" class="chat-status" aria-live="polite"></p>
+            </aside>
+        </div>
+    </main>
+</body>
+</html>

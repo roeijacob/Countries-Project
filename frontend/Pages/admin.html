@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Hello World</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/config.js" defer></script>
+    <script src="../js/utilities.js" defer></script>
+    <script src="../js/ajaxCalls.js" defer></script>
+    <script src="../js/authentication.js" defer></script>
+    <script src="../js/navigation.js" defer></script>
+    <script src="../js/admin.js" defer></script>
+</head>
+
+<body class="admin-page">
+    <nav id="mainNavigation"
+         class="navigation-shell"
+         aria-label="Main navigation"></nav>
+
+    <main class="admin-layout">
+        <header class="admin-header">
+            <div>
+                <h1>Administrator Dashboard</h1>
+
+                <p>
+                    Manage users, statistics and country records.
+                </p>
+
+                <div id="adminCountryLoadStatus"
+                     class="status-message"
+                     aria-live="polite"></div>
+            </div>
+        </header>
+
+        <div id="adminPageStatus"
+             class="status-message"
+             aria-live="polite"></div>
+
+        <section aria-labelledby="adminStatisticsTitle">
+            <h2 id="adminStatisticsTitle"
+                class="visually-hidden">
+                Statistics
+            </h2>
+
+            <div class="admin-stats-grid">
+                <article class="admin-stat-card card">
+                    <strong id="statDailyLogins">0</strong>
+                    <span>Daily logins</span>
+                </article>
+
+                <article class="admin-stat-card card">
+                    <strong id="statTotalUsers">0</strong>
+                    <span>Total users</span>
+                </article>
+
+                <article class="admin-stat-card card">
+                    <strong id="statSavedCountries">0</strong>
+                    <span>Saved countries</span>
+                </article>
+
+                <article class="admin-stat-card card">
+                    <strong id="statCountries">0</strong>
+                    <span>Total countries</span>
+                </article>
+
+                <article class="admin-stat-card card">
+                    <strong id="statReviews">0</strong>
+                    <span>Total reviews</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="admin-section card"
+                 aria-labelledby="userManagementTitle">
+
+            <h2 id="userManagementTitle">
+                User Management
+            </h2>
+            <div class="admin-toolbar">
+                <div>
+                    <label for="adminUserSearch">
+                        Search users
+                    </label>
+
+                    <input id="adminUserSearch"
+                           type="search"
+                           placeholder="Name or email">
+                </div>
+
+                <div>
+                    <label for="adminLockedFilter">
+                        Lock status
+                    </label>
+
+                    <select id="adminLockedFilter">
+                        <option value="">All</option>
+                        <option value="locked">Locked</option>
+                        <option value="unlocked">Unlocked</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="adminRoleFilter">
+                        Role
+                    </label>
+
+                    <select id="adminRoleFilter">
+                        <option value="">All</option>
+                        <option value="admin">Admin</option>
+                        <option value="regular">Non-admin</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="admin-table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <button class="table-sort-button"
+                                        type="button"
+                                        data-user-sort="userId">
+                                    User ID
+                                </button>
+                            </th>
+
+                            <th>
+                                <button class="table-sort-button"
+                                        type="button"
+                                        data-user-sort="fullName">
+                                    Full name
+                                </button>
+                            </th>
+
+                            <th>
+                                <button class="table-sort-button"
+                                        type="button"
+                                        data-user-sort="email">
+                                    Email
+                                </button>
+                            </th>
+
+                            <th>Admin</th>
+                            <th>Status</th>
+
+                            <th>
+                                <button class="table-sort-button"
+                                        type="button"
+                                        data-user-sort="registrationDate">
+                                    Registration
+                                </button>
+                            </th>
+
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="adminUsersTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="admin-pagination">
+                <button id="adminUsersPreviousButton"
+                        type="button">
+                    Previous
+                </button>
+
+                <span id="adminUsersPageInfo">
+                    Page 1 of 1
+                </span>
+
+                <button id="adminUsersNextButton"
+                        type="button">
+                    Next
+                </button>
+            </div>
+        </section>
+
+        <section class="admin-section card"
+                 aria-labelledby="countryManagementTitle">
+
+            <h2 id="countryManagementTitle">
+                Country Management
+            </h2>
+
+            <div id="adminCountryStatus"
+                 class="status-message"
+                 aria-live="polite"></div>
+
+            <form id="adminCountryForm"
+                  class="admin-country-form"
+                  novalidate>
+
+                <h3 id="adminCountryFormTitle">
+                    Add Country
+                </h3>
+
+                <input id="adminCountryEditCode"
+                       type="hidden">
+
+                <div class="admin-country-form-grid">
+                    <div class="form-group admin-country-form-wide">
+                        <label for="adminCountryName">
+                            Country name
+                        </label>
+
+                        <input id="adminCountryName"
+                               type="text"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminCountryAlpha3Code">
+                            Alpha-3 code
+                        </label>
+
+                        <input id="adminCountryAlpha3Code"
+                               type="text"
+                               maxlength="3"
+                               placeholder="ISR"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminCountryAlpha2Code">
+                            Alpha-2 code
+                        </label>
+
+                        <input id="adminCountryAlpha2Code"
+                               type="text"
+                               maxlength="2"
+                               placeholder="IL"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminCapital">
+                            Capital
+                        </label>
+
+                        <input id="adminCapital"
+                               type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminRegion">
+                            Region
+                        </label>
+
+                        <input id="adminRegion"
+                               type="text"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminSubregion">
+                            Subregion
+                        </label>
+
+                        <input id="adminSubregion"
+                               type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminPopulation">
+                            Population
+                        </label>
+
+                        <input id="adminPopulation"
+                               type="number"
+                               min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminArea">
+                            Area km²
+                        </label>
+
+                        <input id="adminArea"
+                               type="number"
+                               min="0"
+                               step="any">
+                    </div>
+
+                    <div class="form-group admin-country-form-wide">
+                        <label for="adminFlagUrl">
+                            Flag URL
+                        </label>
+
+                        <input id="adminFlagUrl"
+                               type="url">
+                    </div>
+
+                    <div class="form-group admin-country-form-wide">
+                        <label for="adminLanguages">
+                            Languages
+                        </label>
+
+                        <input id="adminLanguages"
+                               type="text"
+                               placeholder="Hebrew, English">
+                    </div>
+
+                    <div class="form-group admin-country-form-wide">
+                        <label for="adminCurrencies">
+                            Currencies
+                        </label>
+
+                        <input id="adminCurrencies"
+                               type="text"
+                               placeholder="Israeli new shekel">
+                    </div>
+
+                    <div class="form-group admin-country-form-wide">
+                        <label for="adminBorders">
+                            Borders
+                        </label>
+
+                        <input id="adminBorders"
+                               type="text"
+                               placeholder="EGY, JOR">
+                    </div>
+                </div>
+
+                <div class="admin-actions">
+                    <button type="submit">
+                        Save Country
+                    </button>
+
+                    <button id="adminCancelCountryEdit"
+                            class="secondary-button"
+                            type="button">
+                        Cancel Edit
+                    </button>
+                </div>
+            </form>
+
+            <div class="admin-country-list-section">
+                <div class="admin-country-list-header">
+                    <h3>Countries</h3>
+
+                    <div class="form-group">
+                        <label for="adminCountrySearch">
+                            Search countries
+                        </label>
+
+                        <input id="adminCountrySearch"
+                               type="search"
+                               placeholder="Country name">
+                    </div>
+                </div>
+
+                <div class="admin-table-wrapper admin-country-table-wrapper">
+                    <table class="admin-table admin-country-table">
+                        <thead>
+                            <tr>
+                                <th>Country</th>
+                                <th>Code</th>
+                                <th>Capital</th>
+                                <th>Region / Subregion</th>
+                                <th>Population</th>
+                                <th>Area</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="adminManagedCountriesBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

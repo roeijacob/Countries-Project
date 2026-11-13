@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          
+    <title>Country Trivia | Hello World</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/games.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/config.js" defer></script>
+    <script src="../js/utilities.js" defer></script>
+    <script src="../js/ajaxCalls.js" defer></script>
+    <script src="../js/authentication.js" defer></script>
+    <script src="../js/navigation.js" defer></script>
+    <script src="../js/trivia.js" defer></script>
+</head>
+
+<body class="games-page">
+    <nav id="mainNavigation"
+         class="navigation-shell"
+         aria-label="Main navigation"></nav>
+
+    <main class="game-shell">
+        <header class="game-header">
+            <div>
+                <h1>Country Trivia</h1>
+                <p>
+                    Answer every question before time runs out.
+                </p>
+            </div>
+        </header>
+
+        <div id="triviaStatus"
+             class="status-message"
+             aria-live="polite"></div>
+
+        <section class="game-stats-bar">
+            <div class="game-stat">
+                <strong id="triviaTimer">60</strong>
+                <span>Seconds</span>
+            </div>
+
+            <div class="game-stat">
+                <strong id="triviaQuestionNumber">0</strong>
+                <span>Question</span>
+            </div>
+
+            <div class="game-stat">
+                <strong id="triviaScore">0</strong>
+                <span>Score</span>
+            </div>
+
+            <div class="game-stat">
+                <strong id="triviaCorrectCount">0</strong>
+                <span>Correct</span>
+            </div>
+        </section>
+
+        <section id="triviaCard"
+                 class="trivia-card card"
+                 aria-live="polite">
+
+            <p id="triviaProgress"
+               class="trivia-progress"></p>
+
+            <h2 id="triviaQuestion"
+                class="trivia-question">
+                Loading questions
+            </h2>
+
+            <div id="triviaAnswers"
+                 class="trivia-answers"></div>
+        </section>
+
+        <div id="triviaResultOverlay" class="game-result-overlay" hidden>
+            <section id="triviaResultPanel" class="game-result-panel card" role="dialog" aria-modal="true" aria-labelledby="triviaResultTitle">
+                <h2 id="triviaResultTitle">Trivia Complete</h2>
+                <p id="triviaResultText"></p>
+                <div id="triviaSaveMessage" class="status-message" aria-live="polite"></div>
+                <div class="game-result-actions">
+                    <button id="triviaReplayButton" type="button">Replay</button>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,464 @@
+﻿.reviews-feed-page {
+    min-height: 100vh;
+    background: #f4f7fb;
+}
+
+.reviews-feed-layout {
+    width: min(1400px, calc(100% - 2rem));
+}
+
+.reviews-feed-header {
+    margin-bottom: 1rem;
+    padding: 1.6rem;
+}
+
+    .reviews-feed-header h1 {
+        margin: 0;
+        color: #17243a;
+    }
+
+    .reviews-feed-header > p:last-child {
+        margin: 0.75rem 0 0;
+        color: #617186;
+    }
+
+.reviews-feed-eyebrow {
+    margin: 0 0 0.35rem;
+    color: #164c96;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.reviews-feed-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+}
+
+    .reviews-feed-controls .form-group {
+        margin-bottom: 0;
+    }
+
+.reviews-content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 400px);
+    align-items: start;
+    gap: 1.25rem;
+}
+
+.reviews-column {
+    min-width: 0;
+}
+
+#reviewsFeedStatus:not(:empty) {
+    margin-bottom: 1rem;
+}
+
+.reviews-feed-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.feed-review-card {
+    position: relative;
+    overflow: hidden;
+    padding: 1.25rem;
+    border-color: #dbe4ee;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .feed-review-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 4px;
+        background: #164c96;
+    }
+
+    .feed-review-card:hover {
+        border-color: #bccddd;
+        box-shadow: 0 14px 32px rgba(23, 42, 68, 0.11);
+        transform: translateY(-2px);
+    }
+
+.feed-review-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.feed-review-user {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: 0.8rem;
+}
+
+    .feed-review-user img {
+        width: 52px;
+        height: 52px;
+        flex: 0 0 52px;
+        border: 2px solid #e0e8f1;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .feed-review-user strong,
+    .feed-review-user span {
+        display: block;
+    }
+
+    .feed-review-user a {
+        color: #164c96;
+        font-weight: 800;
+        text-decoration: none;
+    }
+
+        .feed-review-user a:hover {
+            color: #0f3f80;
+            text-decoration: none;
+        }
+
+    .feed-review-user span {
+        margin-top: 0.18rem;
+        color: #758398;
+        font-size: 0.82rem;
+    }
+
+.feed-review-rating {
+    flex-shrink: 0;
+    padding: 0.35rem 0.55rem;
+    border: 1px solid #f1d797;
+    border-radius: 999px;
+    background: #fff8e7;
+    color: #b27600;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.feed-review-country {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding: 0.7rem;
+    border: 1px solid #e2e9f1;
+    border-radius: 11px;
+    background: #f1f5f9;
+}
+
+    .feed-review-country img {
+        width: 46px;
+        height: 31px;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        object-fit: cover;
+    }
+
+    .feed-review-country strong {
+        color: #17243a;
+    }
+
+    .feed-review-country a {
+        padding: 0.45rem 0.7rem;
+        border: 1px solid #c5d5e7;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #164c96;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+        .feed-review-country a:hover {
+            border-color: #164c96;
+            background: #eef5ff;
+            text-decoration: none;
+        }
+
+.feed-review-text {
+    margin: 1rem 0 0;
+    padding: 1rem;
+    border-left: 4px solid #164c96;
+    border-radius: 0 10px 10px 0;
+    background: #f8fafc;
+    color: #26354a;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.feed-review-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.9rem;
+}
+
+    .feed-review-actions button {
+        min-width: 76px;
+        padding: 0.5rem 0.85rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        box-shadow: none;
+    }
+
+    .feed-review-actions .secondary-button {
+        border-color: #d66a6a;
+        background: #fff5f5;
+        color: #a43131;
+    }
+
+        .feed-review-actions .secondary-button:hover {
+            border-color: #bc3f3f;
+            background: #ffeaea;
+            color: #8e2525;
+            box-shadow: none;
+        }
+
+.feed-review-edit-form {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #dce3ec;
+}
+
+.feed-review-edit-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.feed-empty-state {
+    padding: 2rem;
+    text-align: center;
+}
+
+.reviews-chat-section {
+    position: sticky;
+    top: 1rem;
+    min-width: 0;
+    margin: 0;
+    padding: 1rem;
+}
+
+.chat-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+    .chat-header h2 {
+        margin: 0;
+        color: #17243a;
+        font-size: 1.3rem;
+    }
+
+.chat-eyebrow {
+    margin: 0 0 0.25rem;
+    color: #164c96;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.chat-description {
+    margin: 0.45rem 0 1rem;
+    color: #68778a;
+    font-size: 0.88rem;
+}
+
+.chat-live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #bce2cf;
+    border-radius: 999px;
+    background: #effaf4;
+    color: #28754d;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+    .chat-live-indicator span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #39a86b;
+    }
+
+.chat-messages {
+    height: clamp(370px, 53vh, 560px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    overflow-y: auto;
+    border: 1px solid #e1e8f0;
+    border-radius: 13px;
+    background: #eef3f8;
+    scroll-behavior: smooth;
+}
+
+.chat-message {
+    width: fit-content;
+    max-width: 84%;
+    margin: 0;
+    padding: 0.7rem 0.8rem;
+    border-radius: 13px;
+    box-shadow: 0 3px 10px rgba(26, 42, 61, 0.07);
+}
+
+.chat-message-other {
+    align-self: flex-start;
+    border: 1px solid #dce5ee;
+    border-bottom-left-radius: 4px;
+    background: #ffffff;
+    color: #17243a;
+}
+
+.chat-message-own {
+    align-self: flex-end;
+    border: 1px solid #164c96;
+    border-bottom-right-radius: 4px;
+    background: #164c96;
+    color: #ffffff;
+}
+
+.chat-message-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.74rem;
+}
+
+.chat-message-other .chat-message-header strong {
+    color: #164c96;
+}
+
+.chat-message-own .chat-message-header strong {
+    color: #ffffff;
+}
+
+.chat-message-header span {
+    flex-shrink: 0;
+    color: #8090a3;
+    font-size: 0.68rem;
+}
+
+.chat-message-own .chat-message-header span {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.chat-message p {
+    margin: 0.4rem 0 0;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.chat-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch;
+    gap: 0.65rem;
+    margin-top: 0.8rem;
+}
+
+    .chat-form textarea {
+        min-height: 50px;
+        max-height: 110px;
+        padding: 0.75rem;
+        resize: vertical;
+    }
+
+    .chat-form button {
+        min-width: 72px;
+        padding: 0.7rem 0.9rem;
+        font-weight: 700;
+    }
+
+.chat-status {
+    min-height: 1rem;
+    margin: 0.45rem 0 0;
+    color: #a43131;
+    font-size: 0.78rem;
+}
+
+@media (max-width: 1050px) {
+    .reviews-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reviews-chat-section {
+        position: static;
+    }
+
+    .chat-messages {
+        height: 420px;
+    }
+}
+
+@media (max-width: 650px) {
+    .reviews-feed-layout {
+        width: min(100% - 1rem, 1400px);
+    }
+
+    .reviews-feed-header {
+        padding: 1.2rem;
+    }
+
+    .reviews-feed-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .feed-review-header {
+        align-items: flex-start;
+    }
+
+    .feed-review-country {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+        .feed-review-country a {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+    .feed-review-rating {
+        font-size: 0.88rem;
+    }
+
+    .chat-message {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 450px) {
+    .feed-review-header {
+        flex-direction: column;
+    }
+
+    .chat-form {
+        grid-template-columns: 1fr;
+    }
+
+        .chat-form button {
+            width: 100%;
+        }
+}

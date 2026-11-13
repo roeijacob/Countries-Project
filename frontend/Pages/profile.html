@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | Hello World</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/profile.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/config.js" defer></script>
+    <script src="../js/utilities.js" defer></script>
+    <script src="../js/ajaxCalls.js" defer></script>
+    <script src="../js/authentication.js" defer></script>
+    <script src="../js/navigation.js" defer></script>
+    <script src="../js/profile.js" defer></script>
+</head>
+
+<body class="profile-page">
+    <nav id="mainNavigation"
+         class="navigation-shell"
+         aria-label="Main navigation"></nav>
+
+    <main class="profile-layout">
+        <div id="profilePageStatus"
+             class="status-message"
+             aria-live="polite"></div>
+
+        <section class="profile-hero card"
+                 aria-labelledby="profileName">
+
+            <div id="profileOwnerActions"
+                 class="profile-hero-actions"
+                 hidden>
+                <a class="profile-edit-button"
+                   href="edit-profile.html">
+                    Edit Profile
+                </a>
+            </div>
+
+            <img id="profileImage"
+                 class="profile-hero-image"
+                 src="../assets/images/default-profile.svg"
+                 alt="Profile">
+
+            <div class="profile-hero-content">
+                <h1 id="profileName">Profile</h1>
+
+                <p id="profileAgeBirth"
+                   class="profile-hero-subtitle"></p>
+
+                <div class="profile-stats">
+                    <div class="profile-stat">
+                        <strong id="profileTriviaScore">0</strong>
+                        <span>Total game score</span>
+                    </div>
+
+                    <div class="profile-stat">
+                        <strong id="profileVictories">0</strong>
+                        <span>Reviews written</span>
+                    </div>
+
+                    <div class="profile-stat">
+                        <strong id="profileVisitedCount">0</strong>
+                        <span>Countries visited</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="profile-grid">
+            <section class="profile-section card">
+                <h2>Languages</h2>
+                <div id="profileLanguages"
+                     class="chip-list"></div>
+            </section>
+
+            <section class="profile-section card">
+                <h2>Travel Preferences</h2>
+                <div id="profilePreferences"
+                     class="chip-list"></div>
+            </section>
+
+            <section class="profile-section card">
+                <h2>Hobbies</h2>
+                <div id="profileHobbies"
+                     class="chip-list"></div>
+            </section>
+
+            <section class="profile-section card">
+                <h2>Preferred Regions</h2>
+                <div id="profileContinents"
+                     class="chip-list"></div>
+            </section>
+
+            <div class="profile-travel-row">
+                <section class="profile-section card">
+                    <h2>Visited Countries</h2>
+
+                    <p id="visitedCountriesOwnerNote"
+                       class="section-note"
+                       hidden>
+                        Open a visited country to write or
+                        edit its review.
+                    </p>
+
+                    <div id="visitedCountriesStatus"
+                         class="status-message"
+                         aria-live="polite"></div>
+
+                    <div id="profileVisitedCountries"
+                         class="country-collection-list"></div>
+                </section>
+
+                <section class="profile-section card">
+                    <h2>Want to Visit</h2>
+
+                    <p class="section-note">
+                        Countries planned for future visits.
+                    </p>
+
+                    <div id="wantedCountriesStatus"
+                         class="status-message"
+                         aria-live="polite"></div>
+
+                    <div id="profileWantedCountries"
+                         class="country-collection-list"></div>
+                </section>
+            </div>
+
+            <section class="profile-section card profile-section-wide">
+                <h2 id="profileReviewsHeading">
+                    Reviews
+                </h2>
+
+                <div id="profileReviewsStatus"
+                     class="status-message"
+                     aria-live="polite"></div>
+
+                <div id="profileReviews"
+                     class="profile-reviews-list"></div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

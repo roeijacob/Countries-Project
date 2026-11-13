@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Hello World</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/authentication.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/config.js" defer></script>
+    <script src="../js/utilities.js" defer></script>
+    <script src="../js/ajaxCalls.js" defer></script>
+    <script src="../js/authentication.js" defer></script>
+</head>
+
+<body>
+    
+    <main class="authentication-page registration-page">
+        <section class="authentication-card registration-card card"
+                 aria-labelledby="registerTitle">
+
+            <header class="authentication-header">
+                <h1 id="registerTitle">Create Your Account</h1>
+                <p>
+                    Build your travel profile and start
+                    exploring the world.
+                </p>
+            </header>
+
+            <div id="authenticationStatus"
+                 class="status-message"
+                 aria-live="polite"></div>
+
+            <form id="registrationForm" novalidate>
+                <div class="registration-grid">
+                    <div class="form-group form-group-wide">
+                        <label for="registerFullName">
+                            Full name
+                        </label>
+
+                        <input id="registerFullName"
+                               name="fullName"
+                               type="text"
+                               autocomplete="name"
+                               required>
+                    </div>
+
+                    <div class="form-group form-group-wide">
+                        <label for="registerEmail">Email</label>
+
+                        <input id="registerEmail"
+                               name="email"
+                               type="email"
+                               autocomplete="email"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerPassword">
+                            Password
+                        </label>
+
+                        <div class="password-container">
+                            <input id="registerPassword"
+                                   name="password"
+                                   type="password"
+                                   autocomplete="new-password"
+                                   minlength="8"
+                                   required>
+
+                            <button class="password-toggle-icon"
+                                    type="button"
+                                    data-password-target="registerPassword"
+                                    aria-label="Hold to show password">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M4 4l16 16"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerConfirmPassword">
+                            Confirm password
+                        </label>
+
+                        <div class="password-container">
+                            <input id="registerConfirmPassword"
+                                   name="confirmPassword"
+                                   type="password"
+                                   autocomplete="new-password"
+                                   minlength="8"
+                                   required>
+
+                            <button class="password-toggle-icon"
+                                    type="button"
+                                    data-password-target="registerConfirmPassword"
+                                    aria-label="Hold to show password">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M4 4l16 16"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerBirthDate">
+                            Birth date
+                        </label>
+
+                        <input id="registerBirthDate"
+                               name="birthDate"
+                               type="date"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerGender">Gender</label>
+
+                        <select id="registerGender"
+                                name="gender"
+                                required>
+                            <option value="">Select gender</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group form-group-wide">
+                        <label for="registerImageUrl">
+                            Profile image URL
+                            <span>(optional)</span>
+                        </label>
+
+                        <input id="registerImageUrl"
+                               name="imageUrl"
+                               type="url"
+                               placeholder="https://example.com/image.jpg">
+                    </div>
+
+                    <div class="form-group form-group-wide">
+                        <div class="profile-image-preview-box">
+                            <img id="registerImagePreview"
+                                 src="../assets/images/default-profile.svg"
+                                 alt="Profile image preview">
+
+                            <div class="profile-preview-text">
+                                <strong>Profile image preview</strong>
+                                <span>
+                                    Enter an image URL to see it here.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="authentication-submit"
+                        type="submit">
+                    Create Account
+                </button>
+            </form>
+
+            <p class="authentication-switch">
+                Already registered?
+                <a href="login.html">Go to login</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>

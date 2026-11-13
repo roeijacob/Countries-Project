@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Profile | Hello World</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/profile.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/config.js" defer></script>
+    <script src="../js/utilities.js" defer></script>
+    <script src="../js/ajaxCalls.js" defer></script>
+    <script src="../js/authentication.js" defer></script>
+    <script src="../js/navigation.js" defer></script>
+    <script src="../js/edit-profile.js" defer></script>
+</head>
+
+<body class="profile-page">
+    <nav id="mainNavigation"
+         class="navigation-shell"
+         aria-label="Main navigation"></nav>
+
+    <main class="profile-layout edit-profile-layout">
+        <section class="edit-profile-form card"
+                 aria-labelledby="editProfileTitle">
+
+            <div class="edit-profile-heading">
+                <div>
+                    <h1 id="editProfileTitle">
+                        Edit Profile
+                    </h1>
+
+                    <p>
+                        Update your personal information
+                        and travel preferences.
+                    </p>
+                </div>
+            </div>
+
+            <div id="editProfileStatus"
+                 class="status-message"
+                 aria-live="polite"></div>
+
+            <form id="editProfileForm" novalidate>
+                <div class="edit-form-grid">
+                    <div class="form-group">
+                        <label for="editFullName">
+                            Full name
+                        </label>
+
+                        <input id="editFullName"
+                               type="text"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editBirthDate">
+                            Birth date
+                        </label>
+
+                        <input id="editBirthDate"
+                               type="date"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editGender">Gender</label>
+
+                        <select id="editGender" required>
+                            <option value="">
+                                Choose gender
+                            </option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <section class="edit-form-wide edit-subsection">
+                        <h2>Profile Image</h2>
+
+                        <div class="profile-image-editor">
+                            <img id="editImagePreview"
+                                 class="edit-image-preview"
+                                 src="../assets/images/default-profile.svg"
+                                 alt="Profile preview">
+
+                            <div class="profile-image-controls">
+                                <div class="form-group compact-form-group">
+                                    <label for="editImageUrl">
+                                        Image URL
+                                    </label>
+
+                                    <input id="editImageUrl"
+                                           type="url"
+                                           placeholder="https://example.com/photo.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="edit-form-wide edit-subsection">
+                        <h2>Hobbies</h2>
+                        <div id="hobbiesGrid"
+                             class="compact-option-grid"></div>
+                    </section>
+
+                    <section class="edit-form-wide edit-subsection">
+                        <h2>Travel Preferences</h2>
+                        <div id="preferencesGrid"
+                             class="compact-option-grid"></div>
+                    </section>
+
+                    <section class="edit-form-wide edit-subsection">
+                        <h2>Preferred Regions</h2>
+                        <div id="continentsGrid"
+                             class="compact-option-grid"></div>
+                    </section>
+
+                    <section class="edit-form-wide edit-subsection">
+                        <h2>Spoken Languages</h2>
+
+                        <div class="language-add-row">
+                            <div class="language-select-control">
+                                <label for="languageToAdd">
+                                    Language
+                                </label>
+
+                                <select id="languageToAdd">
+                                    <option value="">
+                                        Choose language
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="language-slider-control">
+                                <label for="languageLevelToAdd">
+                                    Proficiency
+                                </label>
+
+                                <input id="languageLevelToAdd"
+                                       type="range"
+                                       min="1"
+                                       max="5"
+                                       step="1"
+                                       value="3">
+
+                                <div id="languageLevelToAddValue"
+                                     class="range-value">
+                                    Intermediate · 3/5
+                                </div>
+                            </div>
+
+                            <button id="addLanguageButton"
+                                    class="compact-action-button"
+                                    type="button">
+                                Add Language
+                            </button>
+                        </div>
+
+                        <div id="selectedLanguagesList"
+                             class="selected-languages-list"></div>
+                    </section>
+
+                    <section class="edit-form-wide edit-subsection">
+                        <div class="country-selector-heading">
+                            <div>
+                                <h2>Visited Countries</h2>
+                                <p class="section-note">
+                                    Click a flag to select or remove a country.
+                                </p>
+                            </div>
+
+                            <input id="visitedCountrySearch"
+                                   class="country-selector-search"
+                                   type="search"
+                                   placeholder="Search countries">
+                        </div>
+
+                        <div id="visitedCountrySelector"
+                             class="country-flag-selector"></div>
+                    </section>
+
+                    <section class="edit-form-wide edit-subsection">
+                        <div class="country-selector-heading">
+                            <div>
+                                <h2>Want to Visit</h2>
+                                <p class="section-note">
+                                    Click a flag to select or remove a country.
+                                </p>
+                            </div>
+
+                            <input id="wantedCountrySearch"
+                                   class="country-selector-search"
+                                   type="search"
+                                   placeholder="Search countries">
+                        </div>
+
+                        <div id="wantedCountrySelector"
+                             class="country-flag-selector"></div>
+                    </section>
+                </div>
+
+                <div class="edit-form-actions">
+                    <button class="compact-primary-button"
+                            type="submit">
+                        Save Changes
+                    </button>
+
+                    <a class="button-link secondary-link-button compact-action-button"
+                       href="profile.html">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
